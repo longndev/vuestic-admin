@@ -5,7 +5,9 @@ import { SelectOption } from 'vuestic-ui'
 import ProjectStatusBadge from '../components/ProjectStatusBadge.vue'
 import UserAvatar from '../../users/widgets/UserAvatar.vue'
 import { useUsersStore } from '../../../stores/users'
+import { useBreakpoint } from 'vuestic-ui'
 
+const vaBreakpoint = useBreakpoint()
 const props = defineProps<{
   project: Project | null
   saveButtonLabel: string
@@ -95,7 +97,7 @@ const teamFiltersSearch = ref('')
       multiple
       :rules="[(v: any) => ('length' in v && v.length > 0) || 'This field is required']"
       :options="usersStore.items"
-      :max-visible-options="$vaBreakpoint.mdUp ? 3 : 1"
+      :max-visible-options="vaBreakpoint.mdUp ? 3 : 1"
     >
       <template #content="{ valueArray }">
         <template v-if="valueArray?.length">
