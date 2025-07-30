@@ -108,7 +108,7 @@ export const externalTooltipHandler = (context: { chart: Chart; tooltip: Tooltip
   computePosition(chart.canvas.parentNode! as HTMLElement, tooltipEl!, {
     placement: 'top',
     middleware: [flip(), shift()],
-  }).then(({ x, y }) => {
+  }).then(({ x, y }: { x: number; y: number }) => {
     Object.assign(tooltipEl!.style, {
       left: `${x}px`,
       top: `${y}px`,
